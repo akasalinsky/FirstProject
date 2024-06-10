@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class SquareMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //Добавил комментарий, чтобы понять как работает подификация в гит
         System.out.println("Привет! Это программа для рисования квадрата. Введите start, чтобы ");
         while (scanner.nextLine() ) {
 
