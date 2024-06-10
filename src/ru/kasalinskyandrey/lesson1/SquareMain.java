@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Теперь введите размер внутреннего квадрата");
         int numberB = scanner.nextInt();
         // Проверяем, чтобы высота была положительной.
-        while ((numberB < 0) || (numberB >= numberA) || (numberA - numberB < 2)) {
+        while ((numberB < 0) || (numberA - numberB)%2 == 1)  {
             System.out.println("Ошибка. Число должно быть положительным и должно быть меньше внешнего размера квадрата как минимум на 2 значения. Введите  размер внутреннего квадрата заново");
             numberB = scanner.nextInt();
         }
