@@ -9,7 +9,7 @@ public class SquareMain {
         Scanner scanner = new Scanner(System.in);
         //Добавил комментарий, чтобы понять как работает подификация в гит
         System.out.println("Привет! Это программа для рисования квадрата. Введите start, чтобы ");
-        while (scanner.nextLine() ) {
+        //while (scanner.nextLine() ) {
 
 
 
@@ -63,4 +63,3 @@ public class SquareMain {
 
 
     }
-}

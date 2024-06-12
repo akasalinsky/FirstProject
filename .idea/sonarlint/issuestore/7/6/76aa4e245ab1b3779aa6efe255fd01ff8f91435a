@@ -1,0 +1,18 @@
+
+¥
+java:S1488s"bImmediately return this expression instead of assigning it to the temporary variable "symbolName".(í¤¤È8ä÷Ö€2J$37ee88b0-f209-4077-a222-a333bf5e70b5
+§
+java:S1488‰"cImmediately return this expression instead of assigning it to the temporary variable "firstNumber".(½ççÔ8ä÷Ö€2J$3250f888-4f64-43bc-8f67-11c4a4ac4deb
+­
+java:S1488™"dImmediately return this expression instead of assigning it to the temporary variable "secondNumber".(Ì„ö¤ıÿÿÿÿ8ä÷Ö€2J$02178651-6db2-487d-a04e-d946f50c358b
+	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‘ğ8ä÷Ö€2J$a8b7e955-14a7-4a44-bb2d-f86c56fd4cfd
+m	java:S106"+Replace this use of System.out by a logger.(ãíŸÆ8ÀùÖ€2J$efd954c8-6482-4e45-9b24-498b582c306f
+m	java:S106"+Replace this use of System.out by a logger.(¬±ê8ĞùÖ€2J$f8eda308-2bcb-4646-a476-785486eb0599
+m	java:S106"+Replace this use of System.out by a logger.(¬±ê8ßùÖ€2J$2cb98631-fefc-4de0-9f2f-15a80af284c2
+r	java:S106-"+Replace this use of System.out by a logger.(×Éöùÿÿÿÿ8úÖ€2J$61cadbeb-15f0-4f3c-95f4-5e752ecf46cf
+d	java:S1318""Add a default case to this switch.(¼—ïß8İıÖ€2J$0bff8b34-cd39-4803-b3c9-6837064d688b
+r	java:S106F"+Replace this use of System.out by a logger.(»ø¿Ãøÿÿÿÿ8İşÖ€2J$8ffbf095-94f4-47d1-b087-bee933a1ed8a
+m	java:S106G"+Replace this use of System.out by a logger.(”ü¥Œ8ÊÿÖ€2J$adbf350c-2239-4c06-8010-193bd68c9666
+d	java:S131R""Add a default case to this switch.(¼—ïß8ÊÿÖ€2J$d7440802-b52b-4058-9694-c097f246fe76
+r	java:S106`"+Replace this use of System.out by a logger.(»ø¿Ãøÿÿÿÿ8ùÿÖ€2J$ab00bb33-cab9-4ee3-9e53-3b86cfbdcdb0
+m	java:S106a"+Replace this use of System.out by a logger.(”ü¥Œ8‡ŞšÖ€2J$85a7a12a-1c0a-4019-8609-d4fdcf7433e3
