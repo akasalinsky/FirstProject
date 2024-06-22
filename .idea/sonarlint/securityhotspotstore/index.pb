@@ -16,3 +16,11 @@ _
 /src/ru/kasalinskyandrey/lesson2/calculator.java,7\6\76aa4e245ab1b3779aa6efe255fd01ff8f91435a
 Z
 *src/ru/kasalinskyandrey/lesson2/readme.txt,c\5\c5a4f120dd6cecbd155da26c198f9f6a3f0a8b8f
+[
++src/ru/kasalinskyandrey/lesson3/Binary.java,d\6\d6ed63bb7385ed7a57c8a0ad65735ea544d23f5f
+b
+2src/ru/kasalinskyandrey/lesson3/InsertionSort.java,1\c\1c1205cab71ca657d65119cf56350e448fd46884
+^
+.src/ru/kasalinskyandrey/lesson3/mergeSort.java,5\f\5f86ba674a51fd659ead12d76f51e9dc50cec21d
+^
+.src/ru/kasalinskyandrey/lesson3/MergeSort.java,e\2\e24e94a396f041605d5b571d96b0aa00693270f3

@@ -1,0 +1,10 @@
+
+m	java:S106"+Replace this use of System.out by a logger.(İÙá8ãˆÍöƒ2J$90606f10-ef80-46db-ab99-619a1ee7999b
+j	java:S108")Either remove or fill this block of code.(¤àÏJ8ãˆÍöƒ2J$43a70289-fd33-4f04-abf0-f4371630fa83
+r
+java:S1659"*Declare "bufferArray2" on a separate line.(ÌÖ ¼ûÿÿÿÿ8òˆÍöƒ2J$ea6a03f1-bf81-4e95-8d3b-632d34023419
+y
+java:S1481"1Remove this unused "bufferArray1" local variable.(ÌÖ ¼ûÿÿÿÿ8òˆÍöƒ2J$67fb83a9-a028-43b8-96f8-4b68649f12b4
+y
+java:S1481"1Remove this unused "bufferArray2" local variable.(ÌÖ ¼ûÿÿÿÿ8òˆÍöƒ2J$b89545e2-3f8a-4bb4-8499-14ee20a8451c
+k	java:S108")Either remove or fill this block of code.(÷ŒÚ£8òˆÍöƒ2J$1ecc28d6-5a12-4e59-ba78-263bd7295443
