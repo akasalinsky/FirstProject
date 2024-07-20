@@ -64,4 +64,9 @@ public class StringArrayStack implements StringStack{
         return innerArray[actualSize-1];
 
     }
+
+    @Override
+    public boolean empty(){
+        return (actualSize == 0);
+    }
 }

@@ -64,4 +64,9 @@ public class StringArrayQueue implements StringQueue{
         }
         return innerArray[front];
     }
+
+    @Override
+    public boolean empty(){
+        return (actualSize == 0);
+    }
 }

@@ -1,12 +1,12 @@
 package ru.kasalinskyandrey.lesson7;
 
-import ru.kasalinskyandrey.lesson6.StringArrayStack;
-import ru.kasalinskyandrey.lesson6.StringStack;
 
 public class StringArrayQueueUse {
     public static void main(String[] args) {
 
         StringQueue stringArrayQueue = new StringArrayQueue();
+
+        System.out.println(stringArrayQueue.empty());
 
         stringArrayQueue.insert("One");
         stringArrayQueue.insert("Two");
@@ -15,9 +15,10 @@ public class StringArrayQueueUse {
         stringArrayQueue.insert("Five");
         stringArrayQueue.insert("Six");
 
+        System.out.println(stringArrayQueue.empty());
+
         for(int i = 0; i < 6; i++) {
-            System.out.println(stringArrayQueue.peek());
-            System.out.println(stringArrayQueue.remove() + ", ");
+           System.out.print(stringArrayQueue.remove() + ", ");
         }
         System.out.print("End.");
 
