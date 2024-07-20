@@ -7,15 +7,39 @@ public class StringArrayStack implements StringStack{
 
     private String[] innerArray;
 
+    //указывает на номер пустого элемента массива, в который будет произведена запись
     private int actualSize;
 
+    //Конструктор для создания стека с размером 16
     public StringArrayStack() {
         this.innerArray = new String[INIT_SIZE];
         this.actualSize = 0;
     }
 
+    //Конструктор для создания стека с нужным размером S
+    public StringArrayStack(int S) {
+        this.innerArray = new String[S];
+        this.actualSize = 0;
+    }
+
+    private void increaseSize() {
+        // increase size of array
+        int currentSize = innerArray.length;
+        int newSize = (int) (currentSize * INCREASE_COEF);
+        String[] newInnerArray = new String[newSize];
+
+        for (int i = 0; i < innerArray.length; i++) {
+            newInnerArray[i] = innerArray[i];
+        }
+        innerArray = newInnerArray;
+    }
+
     @Override
     public void push(String str){
+        if (actualSize == innerArray.length) {
+            increaseSize();
+        }
+
         innerArray[actualSize] = str;
         actualSize++;
 
@@ -26,11 +50,8 @@ public class StringArrayStack implements StringStack{
         if (actualSize <= 0) {
             throw new IndexOutOfBoundsException("Size: " + actualSize);
         }
-        String pop1 = innerArray[actualSize-1];
-        innerArray[actualSize-1] = null;
-        actualSize--;
 
-        return pop1;
+        return innerArray[--actualSize];
 
     }
 
