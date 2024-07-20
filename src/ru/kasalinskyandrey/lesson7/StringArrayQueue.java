@@ -39,7 +39,7 @@ public class StringArrayQueue implements StringQueue{
     }
 
     @Override
-    public void insert(String str){
+    public void add(String str){
         if (actualSize == innerArray.length) {
             increaseSize();
         }
@@ -49,7 +49,7 @@ public class StringArrayQueue implements StringQueue{
     }
 
     @Override
-    public String remove(){
+    public String poll(){
         if (actualSize <= 0) {
             throw new IndexOutOfBoundsException("Size: " + actualSize);
         }
@@ -65,8 +65,4 @@ public class StringArrayQueue implements StringQueue{
         return innerArray[front];
     }
 
-    @Override
-    public boolean empty(){
-        return (actualSize == 0);
-    }
 }
