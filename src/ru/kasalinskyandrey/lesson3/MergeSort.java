@@ -7,7 +7,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] arrayName = Binary.arrayCreate(10);
 
-        arraySort(arrayName);
+        //arraySort(arrayName);
 
         System.out.println(Arrays.toString(arrayName));
     }

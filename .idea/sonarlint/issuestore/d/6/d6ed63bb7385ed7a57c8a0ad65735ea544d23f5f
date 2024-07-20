@@ -1,12 +1,0 @@
-
-~	java:S125	"<This block of commented-out lines of code should be removed.(ûÎ8¹ô˜¤ƒ2J$398cf7a2-cae9-4179-8318-df8878b9b2b5
-m	java:S106"+Replace this use of System.out by a logger.(‚î»õ8¹ô˜¤ƒ2J$cfb2fb88-f40a-4a30-9ee8-4db0b4b6f68d
-m	java:S106"+Replace this use of System.out by a logger.(İÙá8Éô˜¤ƒ2J$aa4b105e-8702-41a3-8ce3-bc9fadb25727
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(½”³ ÿÿÿÿÿ8Éô˜¤ƒ2J$dde698e6-8313-4d37-8196-a6f1ffb9655a
-l
-java:S2140")Use "java.util.Random.nextInt()" instead.(ĞÛ™¥8Éô˜¤ƒ2J$1d729859-9f0a-43bc-9a79-5cfa68f5c8a0
-f
-java:S1659""#Declare "right" on a separate line.(Ï‹›Æ8Øô˜¤ƒ2J$d3fceaa5-c993-4027-bfc2-1c2f7568ea9c
-r	java:S106+"+Replace this use of System.out by a logger.(æò¸Îûÿÿÿÿ8Øô˜¤ƒ2J$1f9ddb21-37e0-40fb-b205-1244ec9c5522
-r	java:S106/"+Replace this use of System.out by a logger.(ÙÏüÕıÿÿÿÿ8Øô˜¤ƒ2J$c620a4ad-a9a9-4d7a-9870-2bb6f6f4f223
-r	java:S1062"+Replace this use of System.out by a logger.(»ÂÌøÿÿÿÿ8Øô˜¤ƒ2J$854e953f-de29-4c12-b7c0-674f4c6afa88
