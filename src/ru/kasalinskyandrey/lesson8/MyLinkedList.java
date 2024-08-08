@@ -7,15 +7,15 @@ public class MyLinkedList<E> implements MyLinkedL<E>{
     private int size = 0;
 
     public MyLinkedList() {
-        lstNode = new Node<E>(null, fstNode, null);
-        fstNode = new Node<E>(null, null, lstNode);
+        lstNode = new Node<>(null, fstNode, null);
+        fstNode = new Node<>(null, null, lstNode);
     }
 
     @Override
     public void addLast(E e) {
         Node<E> prev = lstNode;
         prev.setCurrentElement(e);
-        lstNode = new Node<E>(null, prev, null);
+        lstNode = new Node<>(null, prev, null);
         prev.setNextElement(lstNode);
 
         size++;
@@ -25,7 +25,7 @@ public class MyLinkedList<E> implements MyLinkedL<E>{
     public void addFirst(E e) {
         Node<E> prev = fstNode;
         prev.setCurrentElement(e);
-        fstNode = new Node<E>(null, null, prev);
+        fstNode = new Node<>(null, null, prev);
         prev.setPrevElement(fstNode);
         size++;
 
@@ -43,7 +43,83 @@ public class MyLinkedList<E> implements MyLinkedL<E>{
 
         return null;
     }
-  
+
+    @Override
+    public void remove(E e) {
+        Node<E> testElement = fstNode.getNextElement();
+
+        for(int i = 1; i <= size ; i++) {
+
+            E testCurrentElement = testElement.getCurrentElement();
+
+            if(e.equals(testCurrentElement)){
+
+                testElement.getPrevElement().setNextElement(testElement.getNextElement());
+                testElement.getNextElement().setPrevElement(testElement.getPrevElement());
+                size--;
+            }
+
+            testElement = testElement.getNextElement();
+        }
+
+
+    }
+
+    @Override
+    public void removeFirst() {
+
+        fstNode.setNextElement(fstNode.getNextElement().getNextElement());
+
+        size--;
+
+    }
+
+    @Override
+    public void removeLast() {
+
+        lstNode.setPrevElement(lstNode.getPrevElement().getPrevElement());
+
+        size--;
+
+    }
+
+    @Override
+    public E getFirstElement() {
+        return fstNode.getNextElement().getCurrentElement();
+    }
+
+    @Override
+    public E getLastElement() {
+        return lstNode.getPrevElement().getCurrentElement();
+    }
+
+    @Override
+    public int indexOf(E e) {
+        Node<E> testElement = fstNode.getNextElement();
+
+        for(int i = 1; i <= size ; i++) {
+
+            E testCurrentElement = testElement.getCurrentElement();
+
+            if(e.equals(testCurrentElement)){
+
+                return i;
+            }
+
+            testElement = testElement.getNextElement();
+        }
+
+
+        return 0;
+    }
+
+    @Override
+    public void clearAll() {
+        lstNode = new Node<>(null, fstNode, null);
+        fstNode = new Node<>(null, null, lstNode);
+    }
+
+
     private class Node<E> {
         private E currentElement;
         private Node<E> nextElement;
@@ -61,6 +137,8 @@ public class MyLinkedList<E> implements MyLinkedL<E>{
         public void setCurrentElement(E currentElement) { this.currentElement = currentElement; }
 
         public Node<E> getNextElement() { return nextElement; }
+
+        public Node<E> getPrevElement() { return prevElement; }
 
         public void setNextElement(Node<E> nextElement) { this.nextElement = nextElement; }
 
