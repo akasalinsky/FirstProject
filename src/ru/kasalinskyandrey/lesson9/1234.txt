@@ -1,0 +1,10 @@
+
+Magadan,Paris,666
+
+NewYork,Washington,222
+
+Chily,Magadan,778
+
+Chily,Magadan,778
+
+Chily,Magadan,778
