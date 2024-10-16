@@ -3,7 +3,7 @@ package ru.kasalinskyandrey.lesson9;
 
 import java.util.*;
 
-public class GraphCityRoad extends Graph<City, Road extends Edge<City, Integer>> {
+public class GraphCityRoad extends Graph<City, Road<City, Integer>> {
 
     public GraphCityRoad(){
     }
@@ -12,42 +12,52 @@ public class GraphCityRoad extends Graph<City, Road extends Edge<City, Integer>>
         this.graph = graph;
     }
 
-    GraphCityRoad checkCity (){
-        Map<City, List<Road<City, Integer>>> mapCity = this.getAllNodes();
-        Map<City, List<Road<City, Integer>>> newMapCity = new HashMap<>();
-        Map<String, List<Road<City, Integer>>> cityNameMap = new HashMap<>();
-        Set<City> setCity = mapCity.keySet();
-
-        for (City city: setCity){
-            if(cityNameMap.containsKey(city.cityName)){
-                cityNameMap.get(city.cityName).addAll(mapCity.get(city));
-            }
-            else {
-                newMapCity.put(city, mapCity.get(city));
-                cityNameMap.put(city.cityName, mapCity.get(city));
-            }
+    public City getCity(String cityName){
+        for (City node : graph.keySet()) {
+            if(node.NameToString().equals(cityName.toLowerCase()))
+                return node;
         }
-        return new GraphCityRoad(newMapCity);
+        return null;
     }
 
-
-    public List<City> GetNeighbourCity(String cityName) {
-        List<City> neighbourList = new ArrayList<>();
-        City city = new City();
-
-        Map<City, List<Road<City, Integer>>> mapCity = this.getAllNodes();
-        Set<City> setCity = mapCity.keySet();
-        for (City city1: setCity){
-            if(city1.cityName.equals(cityName)){ city = city1; }
+    public void addRoadManual(String cityOne, String cityTwo, Integer distance) {
+        City cityOneObject = new City(cityOne.toLowerCase());
+        City cityTwoObject = new City(cityTwo.toLowerCase());
+        Set<City> allCity = this.getAllNodesSet();
+        if(!allCity.isEmpty()){
+            for(City city: allCity) {
+                if (city.cityName.equals(cityOne)) { cityOneObject = city;}
+                if (city.cityName.equals(cityTwo)) { cityTwoObject = city;}
+            }
         }
+        Road<City, Integer> road = new Road<>(cityOneObject, cityTwoObject, distance);
+        this.addEdge(cityOneObject, cityTwoObject, road);
+    }
 
-        List<Road<City, Integer>> roadList = this.getNeighbour(city);
+    public void addRoadManualConsole() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input a city One: ");
+        String cityOne = in.nextLine();
 
-        for(Road<City, Integer> road: roadList){
-            if(road.city1.cityName.equals(city.cityName)) {neighbourList.add(road.city2);}
-            else neighbourList.add(road.city1);
+        System.out.print("Input a city Two: ");
+        String cityTwo = in.nextLine();
+
+        System.out.print("Input a distance: ");
+        int distance = in.nextInt();
+
+        City cityOneObject = new City(cityOne.toLowerCase());
+        City cityTwoObject = new City(cityTwo.toLowerCase());
+        Set<City> allCity = this.getAllNodesSet();
+        if(!allCity.isEmpty()){
+            for(City city: allCity) {
+                if (city.cityName.equals(cityOne)) { cityOneObject = city;}
+                if (city.cityName.equals(cityTwo)) { cityTwoObject = city;}
+            }
         }
-        return neighbourList;
+        Road<City, Integer> road = new Road<>(cityOneObject, cityTwoObject, distance);
+
+        this.addEdge(cityOneObject, cityTwoObject, road);
+
     }
 
     @Override

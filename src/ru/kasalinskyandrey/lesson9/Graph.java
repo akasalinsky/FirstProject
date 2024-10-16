@@ -3,38 +3,8 @@ package ru.kasalinskyandrey.lesson9;
 
 import java.util.*;
 
-class Graph<N, E extends Edge<N, E>> {
-    String NODE_YET_MESSAGE = "Такой узел уже есть";
+class Graph<N, E extends Edge<N>> {
     Map<N, List<E>> graph = new HashMap<>();
-
-    public void print() {
-        for (Map.Entry<N, List<E>> entry : graph.entrySet()) {
-            N key = entry.getKey();
-            System.out.println(key);
-            List<E> value = entry.getValue();
-            for (E e : value) {
-                System.out.println(e.getNode1() + " + " + e.getNode2() + " + " + e.getWeight());
-            }
-        }
-    }
-
-    public Graph(){
-    }
-
-    public Graph(Map<N, List<E>> graph){
-        this.graph = graph;
-    }
-
-
-
-
-
-    void addNode(N node) {
-        if(!graph.containsKey(node)) {
-            graph.put(node, null);
-        }
-        else System.out.println(NODE_YET_MESSAGE);
-    }
 
     void addEdge(N node1, N node2, E edge){
         List<E> list1 = new ArrayList<>();
@@ -49,59 +19,132 @@ class Graph<N, E extends Edge<N, E>> {
             graph.put(node2, list2);
     }
 
-    List<E> getNeighbour(N name){
+    List<E> getEdgeNeighbour(N name){
         List<E> edgeList = graph.get(name);
         return edgeList;
+    }
+
+    List<N> getNodeNeighbour(N name){
+        List<N> nodeNeighbour = new ArrayList<>();
+        List<E> edgeNeighbour = this.getEdgeNeighbour(name);
+        for(E e: edgeNeighbour){
+            if(e.getNode1().equals(name)){
+                nodeNeighbour.add(e.getNode2());
+            }
+            if(e.getNode2().equals(name)){
+                nodeNeighbour.add(e.getNode1());
+            }
+        }
+        return nodeNeighbour;
     }
 
     Map<N, List<E>> getAllNodes(){
         return graph;
     }
 
-    List<N> findShortestPath(N nodeFrom, N nodeTo) {
-
-        Map<N, PathNode> map = new HashMap<>();
-
-        List<N> shortPath = new ArrayList<>();
-        shortPath.add(nodeFrom);
-
-        N node = nodeFrom;
-        while (node != nodeTo || node != null) {
-            List<E> neighbourList = getNeighbour(nodeFrom);
-            N nextNode;
-
-            map.put(node, new PathNode());
-            for (E e : neighbourList) {
-                if (e.getNode1().equals(node)) {
-                    nextNode = e.getNode2();
-                } else {
-                    nextNode = e.getNode1();
-                }
-                map.get(node).addNode(nextNode, e.getWeight());
-                nodeFrom = nextNode;
-            }
-        }
-        return  null;
+    Set<N> getAllNodesSet(){
+        return graph.keySet();
     }
 
-        class PathNode {
-        List<N> nodes = new ArrayList<>();
-        List<E> weights = new ArrayList<>();
+    public Map<N, Integer> dijkstra(N nodeFrom) {
+        Map<N, Integer> distances = new HashMap<>();
+        Set<N> nodes = getAllNodes().keySet();
+        Set<N> visited = new HashSet<>();
+        PriorityQueue<NodeForSearch> pq = new PriorityQueue<>();
 
-            public List<E> getWeights() {
-                return weights;
-            }
-
-            public List<N> getNodes() {
-                return nodes;
-            }
-
-            public void addNode(N name, E weight){
-                this.nodes.add(name);
-                this.weights.add(weight);
-            }
-
+        for (N node : nodes) {
+            distances.put(node, Integer.MAX_VALUE);
         }
 
+        distances.put(nodeFrom, 0);
+        pq.add(new NodeForSearch(nodeFrom, 0));
 
+        while (!pq.isEmpty()) {
+            NodeForSearch current = pq.poll();
+            N currentNode = current.getNode();
+            int currentDistance = current.getDistance();
+            visited.add(currentNode);
+
+            if (distances.get(currentNode) < currentDistance) {
+                continue;
+            }
+
+            for (E e : getEdgeNeighbour(currentNode)) {
+                N secondNode = null;
+                if(e.getNode1() == currentNode){
+                    secondNode = e.getNode2();
+                }
+                else {secondNode = e.getNode1();}
+                N neighborNode = secondNode;
+                if (visited.contains(neighborNode)) {
+                    continue;
+                }
+                int neighborWeight = e.getWeight();
+
+                int alternativeDistance = currentDistance + neighborWeight;
+                if (alternativeDistance < distances.get(neighborNode)) {
+                    distances.put(neighborNode, alternativeDistance);
+                    pq.add(new NodeForSearch(neighborNode, alternativeDistance));
+                }
+            }
+        }
+
+        return distances;
+    }
+
+    public List<N> dijkstra(N nodeFrom, N nodeTo) {
+        List<N> result = new ArrayList<>();
+        Map<N, Integer> allNodes = this.dijkstra(nodeFrom);
+        N curentNode = nodeTo;
+        result.add(nodeTo);
+
+        while (curentNode != nodeFrom) {
+            List<N> nodeNeighbor = this.getNodeNeighbour(curentNode);
+            N node = null;
+            int value = Integer.MAX_VALUE;
+            for(N n: nodeNeighbor){
+                if(allNodes.get(n) < value){
+                    value = allNodes.get(n);
+                    node = n;
+                }
+            }
+            result.add(node);
+            curentNode = node;
+        }
+        return result;
+    }
+
+    public void print() {
+        for (Map.Entry<N, List<E>> entry : graph.entrySet()) {
+            N key = entry.getKey();
+            System.out.println(key);
+            List<E> value = entry.getValue();
+            for (E e : value) {
+                System.out.println(e.getNode1() + " + " + e.getNode2() + " + " + e.getWeight());
+            }
+        }
+    }
+
+    class NodeForSearch implements Comparable<NodeForSearch>{
+        private N node;
+        private int distance;
+
+        public NodeForSearch(N node, int distance) {
+            this.node = node;
+            this.distance = distance;
+        }
+
+        public N getNode() {
+            return node;
+        }
+
+        public int getDistance() {
+            return distance;
+        }
+
+        @Override
+        public int compareTo(NodeForSearch other) {
+            return Integer.compare(this.distance, other.distance);
+        }
+    }
 }

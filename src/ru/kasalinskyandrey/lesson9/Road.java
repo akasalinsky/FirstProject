@@ -1,6 +1,6 @@
 package ru.kasalinskyandrey.lesson9;
 
-public class Road<N, E> implements Edge<N, E> {
+public class Road<N, E> implements Edge<N> {
     E distance;
     N city1;
     N city2;
@@ -24,8 +24,8 @@ public class Road<N, E> implements Edge<N, E> {
     }
 
     @Override
-    public E getWeight() {
-        return distance;
+    public Integer getWeight() {
+        return (Integer) distance;
     }
 }
 
