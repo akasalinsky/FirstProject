@@ -1,8 +1,8 @@
 Magadan,Paris,666
-Magadan,NewYork,100
+Magadan,New York,100
 Magadan,Chily,77
 Paris,Washington,541
-Washington,NewYork,222
+Washington,New York,222
 Washington,Chily,5
 Washington,Kazan,100
 Kazan,Ulyanovsk,200

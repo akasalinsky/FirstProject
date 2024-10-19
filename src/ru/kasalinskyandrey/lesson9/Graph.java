@@ -45,6 +45,17 @@ class Graph<N, E extends Edge<N>> {
     Set<N> getAllNodesSet(){
         return graph.keySet();
     }
+    E getEdge(N node1, N node2){
+        List<E> edgeList = graph.get(node1);
+        E result = null;
+
+        for(E e: edgeList){
+            if(e.getNode1().equals(node1) || e.getNode1().equals(node2)){
+                result = e;
+            }
+        }
+        return result;
+    }
 
     public Map<N, Integer> dijkstra(N nodeFrom) {
         Map<N, Integer> distances = new HashMap<>();
@@ -109,6 +120,28 @@ class Graph<N, E extends Edge<N>> {
                 }
             }
             result.add(node);
+            curentNode = node;
+        }
+        return result;
+    }
+
+    public Map<N, Integer> dijkstra2(N nodeFrom, N nodeTo) {
+        Map<N, Integer> result = new HashMap<>();
+        Map<N, Integer> allNodes = this.dijkstra(nodeFrom);
+        N curentNode = nodeTo;
+        result.put(nodeTo, Integer.MAX_VALUE);
+
+        while (curentNode != nodeFrom) {
+            List<N> nodeNeighbor = this.getNodeNeighbour(curentNode);
+            N node = null;
+            int value = Integer.MAX_VALUE;
+            for(N n: nodeNeighbor){
+                if(allNodes.get(n) < value){
+                    value = allNodes.get(n);
+                    node = n;
+                }
+            }
+            result.put(node, value);
             curentNode = node;
         }
         return result;
